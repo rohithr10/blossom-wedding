@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 40 40% 98%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    /* Rose-gold primary color */
+    --primary: 350 35% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Blush pink secondary */
+    --secondary: 350 60% 95%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 40 40% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Soft pastel accent */
+    --accent: 350 70% 92%;
+    --accent-foreground: 350 35% 58%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 350 30% 90%;
+    --input: 350 30% 95%;
+    --ring: 350 35% 58%;
+
+    --radius: 1rem;
+    
+    /* Custom wedding colors - romantic pastels */
+    --rose-gold: 350 35% 58%;
+    --rose-gold-light: 350 60% 88%;
+    --blush-pink: 350 60% 95%;
+    --ivory: 40 40% 98%;
+    --champagne: 40 35% 90%;
+    --lavender: 270 40% 92%;
+    --peach: 20 70% 90%;
+    
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(350 60% 95%) 0%, hsl(40 40% 98%) 50%, hsl(350 70% 92%) 100%);
+    --gradient-hero: linear-gradient(to bottom, hsl(350 60% 95% / 0.3), hsl(40 40% 98% / 0.8));
+    --gradient-story: linear-gradient(135deg, hsl(40 40% 98%) 0%, hsl(350 70% 92%) 100%);
+    --gradient-timeline: linear-gradient(to bottom, hsl(270 40% 92%) 0%, hsl(350 60% 95%) 100%);
+    --gradient-overlay: linear-gradient(to bottom, transparent, hsl(40 40% 98% / 0.95));
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 350 35% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 350 35% 25%;
+    --accent-foreground: 350 35% 85%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 350 35% 58%;
+    
+    --rose-gold: 350 35% 58%;
+    --rose-gold-light: 350 45% 35%;
+    --ivory: 0 0% 18%;
+    --champagne: 0 0% 22%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Section backgrounds */
+  .section-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .section-story {
+    background: var(--gradient-story);
+  }
+  
+  .section-timeline {
+    background: var(--gradient-timeline);
+  }
+  
+  .section-romantic {
+    background: var(--gradient-romantic);
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Particle animation */
+  @keyframes particle-float {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(50px);
+      opacity: 0;
+    }
+  }
+  
+  .animate-particle {
+    animation: particle-float linear infinite;
+  }
+}
