@@ -17,18 +17,18 @@ import gallery11 from "@/assets/coupleimage4.png";
 const galleryImages = [
   {
     src: gallery8,
-    alt: "Victor and Preethi at engagement",
-    caption: "Our Engagement Day",
+    alt: "Embrace of Forever",
+    caption: "Embrace of Forever",
   },
   {
     src: gallery11,
-    alt: "Wedding ceremony",
-    caption: "The Ceremony",
+    alt: "Whispers of Togetherness",
+    caption: "Whispers of Togetherness",
   },
   {
     src: gallery10,
-    alt: "Wedding rings",
-    caption: "Rings and Bible",
+    alt: "Bound by Love",
+    caption: "Bound by Love",
   },
 ];
 

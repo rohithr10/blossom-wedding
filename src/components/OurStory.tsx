@@ -5,8 +5,8 @@ import { Heart, Users, Church, Sparkles, Cross } from "lucide-react";
 const timeline = [
   {
     icon: Users,
-    title: "First Meeting",
-    date: "2016",
+    title: "Beginnings",
+    date: "2023",
     description:
       "Our paths crossed for the first time, and we knew there was something special between us.",
   },
