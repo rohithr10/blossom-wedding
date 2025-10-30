@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { MapPin, Navigation } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
+import location1 from "../assets/location1.png";
+import location2 from "../assets/location2.png";
+
 // EDITABLE: Update these with actual locations and Google Maps API key
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
 
@@ -9,6 +12,7 @@ const locations = [
   {
     name: "CSI Church",
     address: "CSI Church, Gobichettipalayam, Tamil Nadu ",
+    image: location2,
     mapUrl: "https://maps.google.com/?q=CSI+Church+Gobichettipalayam",
     // Update with actual coordinates when available
     embedUrl: `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=CSI+Church+Gobichettipalayam`,
@@ -16,6 +20,7 @@ const locations = [
   {
     name: "Karthikeya Mahal",
     address: "Sathy Rd, Karattadipalayam, Gobichettipalayam, Tamil Nadu",
+    image: location1,
     mapUrl:
       "https://maps.google.com/?q=Karthikeya+Mahal+Sathy+Rd+Karattadipalayam+Gobichettipalayam+Tamil+Nadu+638453",
     embedUrl: `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=Karthikeya+Mahal+Sathy+Rd+Karattadipalayam+Gobichettipalayam+Tamil+Nadu+638453`,
@@ -105,19 +110,18 @@ const MapSection = () => {
                     />
                   ) : (
                     <div className="w-full h-full bg-muted flex items-center justify-center">
-                      <div className="text-center p-8">
-                        <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                        <p className="text-muted-foreground">
-                          Add VITE_GOOGLE_MAPS_API_KEY to .env to enable
-                          embedded maps
-                        </p>
+                      <div className="text-center p-8 w-full h-full">
                         <a
                           href={location.mapUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block mt-4 text-primary hover:underline"
+                          className="block w-full h-full"
                         >
-                          Open in Google Maps
+                          <img
+                            src={location.image}
+                            alt="Location Icon"
+                            className="w-full h-full object-cover rounded-lg opacity-70 hover:opacity-100 transition-opacity duration-300"
+                          />
                         </a>
                       </div>
                     </div>

@@ -1,29 +1,29 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { Button } from './ui/button';
+import { motion, AnimatePresence } from "framer-motion";
+import { BookOpen, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Button } from "./ui/button";
 
 const bibleVerses = [
   {
     text: "Be completely humble and gentle; be patient, bearing with one another in love.",
-    reference: "Ephesians 4:2"
+    reference: "Ephesians 4:2",
   },
   {
     text: "Above all, love each other deeply, because love covers over a multitude of sins.",
-    reference: "1 Peter 4:8"
+    reference: "1 Peter 4:8",
   },
   {
     text: "Two are better than one… If either of them falls down, one can help the other up.",
-    reference: "Ecclesiastes 4:9–10"
+    reference: "Ecclesiastes 4:9–10",
   },
   {
     text: "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.",
-    reference: "1 Corinthians 13:4"
+    reference: "1 Corinthians 13:4",
   },
   {
     text: "Therefore what God has joined together, let no one separate.",
-    reference: "Mark 10:9"
-  }
+    reference: "Mark 10:9",
+  },
 ];
 
 const BlessingsSection = () => {
@@ -32,7 +32,7 @@ const BlessingsSection = () => {
 
   useEffect(() => {
     if (!isAutoPlay) return;
-    
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % bibleVerses.length);
     }, 6000);
@@ -47,26 +47,31 @@ const BlessingsSection = () => {
 
   const goToPrevious = () => {
     setIsAutoPlay(false);
-    setCurrentIndex((prev) => (prev - 1 + bibleVerses.length) % bibleVerses.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + bibleVerses.length) % bibleVerses.length
+    );
   };
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-background via-accent/30 to-background" id="blessings">
+    <section
+      className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-background via-accent/30 to-background"
+      id="blessings"
+    >
       {/* Glowing background effects */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-        animate={{ 
+        animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
+          opacity: [0.3, 0.5, 0.3],
         }}
         transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
       />
-      
+
       <motion.div
         className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-rose-gold-light/20 rounded-full blur-3xl"
-        animate={{ 
+        animate={{
           scale: [1.2, 1, 1.2],
-          opacity: [0.3, 0.5, 0.3]
+          opacity: [0.3, 0.5, 0.3],
         }}
         transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
       />
@@ -111,9 +116,9 @@ const BlessingsSection = () => {
               {/* Decorative sparkles */}
               <motion.div
                 className="absolute top-4 right-4 opacity-40"
-                animate={{ 
+                animate={{
                   rotate: [0, 360],
-                  scale: [1, 1.2, 1]
+                  scale: [1, 1.2, 1],
                 }}
                 transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
               >
@@ -122,9 +127,9 @@ const BlessingsSection = () => {
 
               <motion.div
                 className="absolute bottom-4 left-4 opacity-40"
-                animate={{ 
+                animate={{
                   rotate: [360, 0],
-                  scale: [1, 1.2, 1]
+                  scale: [1, 1.2, 1],
                 }}
                 transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
               >
@@ -172,9 +177,9 @@ const BlessingsSection = () => {
                 setCurrentIndex(index);
               }}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? 'bg-primary w-8' 
-                  : 'bg-primary/30 hover:bg-primary/50'
+                index === currentIndex
+                  ? "bg-primary w-8"
+                  : "bg-primary/30 hover:bg-primary/50"
               }`}
               aria-label={`Go to verse ${index + 1}`}
             />

@@ -1,26 +1,34 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import gallery1 from '@/assets/gallery-1.jpg';
-import gallery2 from '@/assets/gallery-2.jpg';
-import gallery3 from '@/assets/gallery-3.jpg';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/wedding1.png";
+import gallery5 from "@/assets/wedding2.png";
+import gallery6 from "@/assets/wedding3.png";
+import gallery7 from "@/assets/wedding4.png";
+import gallery8 from "@/assets/coupleimage.png";
+import gallery9 from "@/assets/coupleimage2.png";
+import gallery10 from "@/assets/coupleimage3.png";
+import gallery11 from "@/assets/coupleimage4.png";
 
 // EDITABLE: Add more gallery images here
 const galleryImages = [
   {
-    src: gallery1,
-    alt: 'Victor and Preethi at engagement',
-    caption: 'Our Engagement Day',
+    src: gallery8,
+    alt: "Victor and Preethi at engagement",
+    caption: "Our Engagement Day",
   },
   {
-    src: gallery2,
-    alt: 'Wedding ceremony',
-    caption: 'The Ceremony',
+    src: gallery11,
+    alt: "Wedding ceremony",
+    caption: "The Ceremony",
   },
   {
-    src: gallery3,
-    alt: 'Wedding rings',
-    caption: 'Rings and Bible',
+    src: gallery10,
+    alt: "Wedding rings",
+    caption: "Rings and Bible",
   },
 ];
 
@@ -43,7 +51,9 @@ const PhotoGallery = () => {
 
   const goToPrevious = () => {
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + galleryImages.length) % galleryImages.length);
+      setSelectedImage(
+        (selectedImage - 1 + galleryImages.length) % galleryImages.length
+      );
     }
   };
 

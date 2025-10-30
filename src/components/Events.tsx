@@ -9,8 +9,8 @@ const events = [
     title: "Engagement",
     date: "Sunday, January 11, 2026",
     time: "6:00 PM onwards",
-    venue: "CSI Church",
-    address: "CSI Church, Gobichettipalayam ",
+    venue: "Karthikeya Mahal",
+    address: "Sathy Rd, Karattadipalayam, Gobichettipalayam, Tamil Nadu",
     description: "Join us for our engagement ceremony",
     mapUrl: "https://maps.google.com/?q=CSI+Church+Gobichettipalayam", // Update with exact location
     calendarEvent: {

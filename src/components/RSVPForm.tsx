@@ -1,26 +1,30 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Send, Phone, Mail, Heart } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Send, Phone, Mail, Heart } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 // EDITABLE: Update contact information
-const GROOM_PHONE = '9500859595';
-const BRIDE_PHONE = '6380711787';
-const RSVP_EMAIL = 'rsvp@victorandpreethi.com'; // Update with actual email
+const GROOM_PHONE = "9500859595";
+const BRIDE_PHONE = "6380711787";
+const RSVP_EMAIL = "victorcalwin@gmail.com"; // Update with actual email
 
 const RSVPForm = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    guests: '1',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    guests: "1",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -43,23 +47,24 @@ const RSVPForm = () => {
       // Example: await fetch('/api/rsvp', { method: 'POST', body: JSON.stringify(formData) });
 
       toast({
-        title: 'Thank you for your RSVP!',
-        description: 'We look forward to celebrating with you.',
+        title: "Thank you for your RSVP!",
+        description: "We look forward to celebrating with you.",
       });
 
       // Reset form
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        guests: '1',
-        message: '',
+        name: "",
+        email: "",
+        phone: "",
+        guests: "1",
+        message: "",
       });
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Something went wrong. Please try again or contact us directly.',
-        variant: 'destructive',
+        title: "Error",
+        description:
+          "Something went wrong. Please try again or contact us directly.",
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -67,13 +72,16 @@ const RSVPForm = () => {
   };
 
   return (
-    <section className="py-20 px-4 section-romantic relative overflow-hidden" id="rsvp">
+    <section
+      className="py-20 px-4 section-romantic relative overflow-hidden"
+      id="rsvp"
+    >
       {/* Decorative hearts */}
       <motion.div
         className="absolute top-10 left-5 opacity-10"
-        animate={{ 
+        animate={{
           y: [0, -30, 0],
-          rotate: [0, 15, 0]
+          rotate: [0, 15, 0],
         }}
         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
       >
@@ -82,9 +90,9 @@ const RSVPForm = () => {
 
       <motion.div
         className="absolute bottom-10 right-5 opacity-10"
-        animate={{ 
+        animate={{
           y: [0, 30, 0],
-          rotate: [0, -15, 0]
+          rotate: [0, -15, 0],
         }}
         transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
       >
@@ -106,7 +114,10 @@ const RSVPForm = () => {
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
             className="inline-block mb-4"
           >
-            <Heart className="w-16 h-16 text-primary mx-auto animate-float" fill="currentColor" />
+            <Heart
+              className="w-16 h-16 text-primary mx-auto animate-float"
+              fill="currentColor"
+            />
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-4">
@@ -174,7 +185,9 @@ const RSVPForm = () => {
 
             <div className="bg-accent/30 rounded-2xl p-6">
               <p className="text-sm text-muted-foreground">
-                <strong className="text-foreground">Note:</strong> If you prefer, you can also reach out to us directly via phone or WhatsApp. We'd love to hear from you!
+                <strong className="text-foreground">Note:</strong> If you
+                prefer, you can also reach out to us directly via phone or
+                WhatsApp. We'd love to hear from you!
               </p>
             </div>
           </motion.div>
@@ -188,7 +201,10 @@ const RSVPForm = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Full Name *
                 </label>
                 <input
@@ -204,7 +220,10 @@ const RSVPForm = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Email Address *
                 </label>
                 <input
@@ -220,7 +239,10 @@ const RSVPForm = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Phone Number
                 </label>
                 <input
@@ -235,7 +257,10 @@ const RSVPForm = () => {
               </div>
 
               <div>
-                <label htmlFor="guests" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="guests"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Number of Guests *
                 </label>
                 <select
@@ -248,14 +273,17 @@ const RSVPForm = () => {
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                     <option key={num} value={num}>
-                      {num} {num === 1 ? 'Guest' : 'Guests'}
+                      {num} {num === 1 ? "Guest" : "Guests"}
                     </option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Message (Optional)
                 </label>
                 <textarea
@@ -276,7 +304,7 @@ const RSVPForm = () => {
                 whileTap={{ scale: 0.98 }}
                 className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 disabled:from-primary/50 disabled:to-primary/40 text-primary-foreground rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-2xl group"
               >
-                {isSubmitting ? 'Sending...' : 'Send RSVP'}
+                {isSubmitting ? "Sending..." : "Send RSVP"}
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </form>
