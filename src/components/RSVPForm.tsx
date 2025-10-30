@@ -4,8 +4,8 @@ import { Send, Phone, Mail, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 // EDITABLE: Update contact information
-const GROOM_PHONE = "9500859595";
-const BRIDE_PHONE = "6380711787";
+const GROOM_PHONE = "7708914890";
+const BRIDE_PHONE = "7358887333";
 const RSVP_EMAIL = "victorcalwin@gmail.com"; // Update with actual email
 
 const RSVPForm = () => {
@@ -150,7 +150,7 @@ const RSVPForm = () => {
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">Victor (Groom)</p>
+                    <p className="font-medium">Benjamin Timothy</p>
                     <p className="text-muted-foreground">{GROOM_PHONE}</p>
                   </div>
                 </a>
@@ -163,7 +163,7 @@ const RSVPForm = () => {
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">Preethi (Bride)</p>
+                    <p className="font-medium">Joy Priya</p>
                     <p className="text-muted-foreground">{BRIDE_PHONE}</p>
                   </div>
                 </a>
