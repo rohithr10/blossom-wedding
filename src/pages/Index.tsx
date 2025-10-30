@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Love Bloom Wedding - Victor & Preethi</title>
+        <title>Victor & Preethi</title>
         <meta
           name="description"
           content="Join us in celebrating the wedding of Victor and Preethi on January 12, 2026 at Karthikeya Mahal, Gobichettipalayam"

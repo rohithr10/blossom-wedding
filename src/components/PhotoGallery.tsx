@@ -68,10 +68,10 @@ const PhotoGallery = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-4">
-            Photo Gallery
+            A Glimpse Into Tomorrow
           </h2>
           <p className="text-lg text-muted-foreground">
-            Captured moments from our journey
+            The future unfolds where innovation meets imagination.
           </p>
         </motion.div>
 
