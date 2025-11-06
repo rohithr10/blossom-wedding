@@ -12,7 +12,8 @@ const events = [
     venue: "Karthikeya Mahal",
     address: "Sathy Rd, Karattadipalayam, Gobichettipalayam, Tamil Nadu",
     description: "Join us for our engagement ceremony",
-    mapUrl: "https://maps.google.com/?q=CSI+Church+Gobichettipalayam", // Update with exact location
+    mapUrl:
+      "https://maps.google.com/?q=Karthikeya+Mahal+Sathy+Rd+Karattadipalayam+Gobichettipalayam+Tamil+Nadu+638453",
     calendarEvent: {
       title: "Victor & Preethi - Engagement",
       description: "Join us for our engagement ceremony at CSI Church",
