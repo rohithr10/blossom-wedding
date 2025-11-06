@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
 
 // EDITABLE: Wedding date and time (IST timezone)
-const WEDDING_DATE = new Date("2026-01-12T10:00:00+05:30");
+// const WEDDING_DATE = new Date("2026-01-12T10:00:00+05:30");
+const WEDDING_DATE = new Date("2025-11-11T16:45:00+05:30");
 
 interface TimeLeft {
   days: number;
