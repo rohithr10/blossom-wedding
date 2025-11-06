@@ -120,15 +120,15 @@ const RSVPForm = () => {
             />
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-4">
+          {/* <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-4">
             RSVP
           </h2>
           <p className="text-lg text-muted-foreground">
             Please let us know if you can join us on our special day
-          </p>
+          </p> */}
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid  gap-12">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -193,7 +193,7 @@ const RSVPForm = () => {
           </motion.div>
 
           {/* RSVP Form */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -308,7 +308,7 @@ const RSVPForm = () => {
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </form>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

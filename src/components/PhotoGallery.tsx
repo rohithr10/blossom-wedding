@@ -1,32 +1,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/wedding1.png";
-import gallery5 from "@/assets/wedding2.png";
-import gallery6 from "@/assets/wedding3.png";
-import gallery7 from "@/assets/wedding4.png";
-import gallery8 from "@/assets/coupleimage.png";
-import gallery9 from "@/assets/coupleimage2.png";
-import gallery10 from "@/assets/coupleimage3.png";
-import gallery11 from "@/assets/coupleimage4.png";
+import gallery1 from "@/assets/coupleimage.png";
+import gallery2 from "@/assets/coupleimage5.png";
+import gallery3 from "@/assets/coupleimage3.png";
+import gallery4 from "@/assets/coupleimage4.png";
 
 // EDITABLE: Add more gallery images here
 const galleryImages = [
   {
-    src: gallery8,
+    src: gallery2,
     alt: "Embrace of Forever",
     caption: "Embrace of Forever",
   },
   {
-    src: gallery11,
+    src: gallery3,
     alt: "Whispers of Togetherness",
     caption: "Whispers of Togetherness",
   },
   {
-    src: gallery10,
+    src: gallery4,
     alt: "Bound by Love",
     caption: "Bound by Love",
   },
