@@ -60,7 +60,7 @@ const ParentsSection = () => {
                   Groom’s Family
                 </h3>
                 <p className="text-gray-500 mt-2">
-                  With heartfelt blessings and love, they stand by Victor as he
+                  With heartfelt blessings and love, We stand by Victor as he
                   begins this new journey.
                 </p>
               </div>
@@ -75,7 +75,7 @@ const ParentsSection = () => {
                   Bride’s Family
                 </h3>
                 <p className="text-gray-500 mt-2">
-                  Showering their blessings and love, they joyfully send Preethi
+                  Showering their blessings and love, We joyfully send Preethi
                   into her new chapter.
                 </p>
               </div>
