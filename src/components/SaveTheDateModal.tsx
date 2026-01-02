@@ -6,22 +6,17 @@ const SaveTheDateModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if user has seen the modal before
-    const hasSeenModal = localStorage.getItem("hasSeenSaveTheDate");
+    // Show modal every time the page loads
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1500);
 
-    if (!hasSeenModal) {
-      // Show modal after a short delay
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 1500);
-
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem("hasSeenSaveTheDate", "true");
+    // Removed localStorage - popup will show every visit
   };
 
   return (
