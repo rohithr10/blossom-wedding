@@ -10,8 +10,8 @@ const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
 
 const locations = [
   {
-    name: "CSI St.Paul Church",
-    address: "CSI St.Paul Church, Gobichettipalayam, Tamil Nadu ",
+    name: "CSI St.Paul's Church",
+    address: "CSI St.Paul's Church, Gobichettipalayam, Tamil Nadu ",
     image: location2,
     mapUrl: "https://maps.google.com/?q=CSI+Church+Gobichettipalayam",
     // Update with actual coordinates when available

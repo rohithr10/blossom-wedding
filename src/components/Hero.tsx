@@ -122,7 +122,7 @@ const Hero = () => {
               January 12, 2026
             </motion.p>
             <p className="text-lg md:text-xl text-foreground/70 mt-2">
-              CSI St.Paul Church
+              CSI St.Paul's Church
             </p>
           </motion.div>
 

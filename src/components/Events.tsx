@@ -17,7 +17,7 @@ const events = [
     calendarEvent: {
       title: "Victor & Preethi - Engagement",
       description: "Join us for our engagement ceremony at CSI St.Paul Church",
-      location: "CSI St.Paul Church, Gobichettipalayam",
+      location: "CSI St.Paul's Church, Gobichettipalayam",
       startTime: new Date("2026-01-11T18:00:00+05:30"), // 6:00 PM IST
       endTime: new Date("2026-01-11T20:00:00+05:30"), // 8:00 PM IST (estimated)
     } as CalendarEvent,
@@ -26,14 +26,14 @@ const events = [
     title: "Wedding Ceremony",
     date: "Monday, January 12, 2026",
     time: "10:00 AM - 11:00 AM",
-    venue: "CSI St.Paul Church",
-    address: "CSI St.Paul Church, Gobichettipalayam ",
+    venue: "CSI St.Paul's Church",
+    address: "CSI St.Paul's Church, Gobichettipalayam ",
     description: "Witness our union in holy matrimony",
     mapUrl: "https://maps.google.com/?q=CSI+Church+Gobichettipalayam", // Update with exact location
     calendarEvent: {
       title: "Victor & Preethi - Wedding Ceremony",
       description: "Witness our union in holy matrimony at CSI St.Paul Church",
-      location: "CSI St.Paul Church, Gobichettipalayam",
+      location: "CSI St.Paul's Church, Gobichettipalayam",
       startTime: new Date("2026-01-12T10:00:00+05:30"), // 10:00 AM IST
       endTime: new Date("2026-01-12T11:00:00+05:30"), // 11:00 AM IST
     } as CalendarEvent,
