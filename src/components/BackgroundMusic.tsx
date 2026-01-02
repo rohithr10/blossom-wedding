@@ -91,6 +91,7 @@ import weddingMusic from "../assets/music/wedding-music.mp3";
 const BackgroundMusic = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [showControls, setShowControls] = useState(true);
+  const [autoplayAttempted, setAutoplayAttempted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const musicUrl = weddingMusic;
@@ -102,6 +103,7 @@ const BackgroundMusic = () => {
 
     audio.volume = 0.7;
     audio.muted = false;
+    setAutoplayAttempted(true);
 
     // Multiple attempts to play
     const attemptPlay = async () => {
@@ -150,7 +152,8 @@ const BackgroundMusic = () => {
   }, [isPlaying]);
 
   const toggleMusic = () => {
-    setIsPlaying((prev) => !prev);
+    // setIsPlaying((prev) => !prev);
+    setIsPlaying(!isPlaying);
   };
 
   // Hide controls after some time if music is playing
@@ -175,46 +178,38 @@ const BackgroundMusic = () => {
     return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Fallback: try to play on first user interaction if autoplay failed
+  // Smart fallback: only try to play on popup interaction if autoplay failed
   useEffect(() => {
-    if (!isPlaying) {
+    if (autoplayAttempted && !isPlaying) {
       let hasTriedFallback = false;
 
-      const tryPlayOnInteraction = async () => {
+      const handlePopupInteraction = async () => {
         if (hasTriedFallback) return;
         hasTriedFallback = true;
 
         const audio = audioRef.current;
-        if (audio) {
+        if (audio && audio.paused) {
           try {
             await audio.play();
             setIsPlaying(true);
-            console.log("Fallback play successful");
+            console.log("Popup interaction autoplay successful");
           } catch (err) {
-            console.log("Fallback play failed:", err);
+            console.log("Popup interaction autoplay failed:", err);
           }
         }
 
-        // Remove all listeners after first attempt
-        document.removeEventListener("click", tryPlayOnInteraction);
-        document.removeEventListener("scroll", tryPlayOnInteraction);
-        document.removeEventListener("keydown", tryPlayOnInteraction);
-        document.removeEventListener("touchstart", tryPlayOnInteraction);
+        // Remove listener after first attempt
+        document.removeEventListener("click", handlePopupInteraction);
       };
 
-      document.addEventListener("click", tryPlayOnInteraction);
-      document.addEventListener("scroll", tryPlayOnInteraction);
-      document.addEventListener("keydown", tryPlayOnInteraction);
-      document.addEventListener("touchstart", tryPlayOnInteraction);
+      // Only listen for clicks (popup interaction)
+      document.addEventListener("click", handlePopupInteraction);
 
       return () => {
-        document.removeEventListener("click", tryPlayOnInteraction);
-        document.removeEventListener("scroll", tryPlayOnInteraction);
-        document.removeEventListener("keydown", tryPlayOnInteraction);
-        document.removeEventListener("touchstart", tryPlayOnInteraction);
+        document.removeEventListener("click", handlePopupInteraction);
       };
     }
-  }, [isPlaying]);
+  }, [autoplayAttempted, isPlaying]);
 
   return (
     <>
