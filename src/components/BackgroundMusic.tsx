@@ -86,34 +86,139 @@
 import { useState, useRef, useEffect } from "react";
 import { Music, Volume2, VolumeX } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import weddingMusic from "../assets/music/wedding-music.mp3"; // adjust path if needed
+import weddingMusic from "../assets/music/wedding-music.mp3";
 
 const BackgroundMusic = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [showControls, setShowControls] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const musicUrl = weddingMusic; // use imported path
+  const musicUrl = weddingMusic;
 
+  // Try autoplay when component mounts - EVERY TIME
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = 0.7;
+    audio.muted = false;
+
+    // Multiple attempts to play
+    const attemptPlay = async () => {
+      try {
+        // First attempt
+        await audio.play();
+        setIsPlaying(true);
+        console.log("Autoplay successful");
+      } catch (err) {
+        console.log("Autoplay blocked:", err);
+        setIsPlaying(false);
+
+        // Try again after a short delay
+        setTimeout(async () => {
+          try {
+            await audio.play();
+            setIsPlaying(true);
+            console.log("Delayed autoplay successful");
+          } catch (err2) {
+            console.log("Delayed autoplay also failed:", err2);
+          }
+        }, 500);
+      }
+    };
+
+    // Try immediately
+    attemptPlay();
+
+    // Also try after DOM is fully loaded
+    setTimeout(attemptPlay, 100);
+    setTimeout(attemptPlay, 1000);
+  }, []); // Empty dependency array - runs on every mount
+
+  // Handle play/pause when isPlaying state changes
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     if (isPlaying) {
       audio.play().catch((err) => {
-        console.log("Audio play failed:", err);
-        setIsPlaying(false);
+        console.log("Play failed:", err);
       });
     } else {
       audio.pause();
     }
   }, [isPlaying]);
 
-  const toggleMusic = () => setIsPlaying((prev) => !prev);
+  const toggleMusic = () => {
+    setIsPlaying((prev) => !prev);
+  };
+
+  // Hide controls after some time if music is playing
+  useEffect(() => {
+    if (isPlaying) {
+      const timer = setTimeout(() => {
+        setShowControls(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowControls(true);
+    }
+  }, [isPlaying]);
+
+  // Show controls on mouse movement
+  useEffect(() => {
+    const handleMouseMove = () => {
+      setShowControls(true);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => document.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Fallback: try to play on first user interaction if autoplay failed
+  useEffect(() => {
+    if (!isPlaying) {
+      let hasTriedFallback = false;
+
+      const tryPlayOnInteraction = async () => {
+        if (hasTriedFallback) return;
+        hasTriedFallback = true;
+
+        const audio = audioRef.current;
+        if (audio) {
+          try {
+            await audio.play();
+            setIsPlaying(true);
+            console.log("Fallback play successful");
+          } catch (err) {
+            console.log("Fallback play failed:", err);
+          }
+        }
+
+        // Remove all listeners after first attempt
+        document.removeEventListener("click", tryPlayOnInteraction);
+        document.removeEventListener("scroll", tryPlayOnInteraction);
+        document.removeEventListener("keydown", tryPlayOnInteraction);
+        document.removeEventListener("touchstart", tryPlayOnInteraction);
+      };
+
+      document.addEventListener("click", tryPlayOnInteraction);
+      document.addEventListener("scroll", tryPlayOnInteraction);
+      document.addEventListener("keydown", tryPlayOnInteraction);
+      document.addEventListener("touchstart", tryPlayOnInteraction);
+
+      return () => {
+        document.removeEventListener("click", tryPlayOnInteraction);
+        document.removeEventListener("scroll", tryPlayOnInteraction);
+        document.removeEventListener("keydown", tryPlayOnInteraction);
+        document.removeEventListener("touchstart", tryPlayOnInteraction);
+      };
+    }
+  }, [isPlaying]);
 
   return (
     <>
-      <audio ref={audioRef} loop>
+      <audio ref={audioRef} loop autoPlay muted={false} preload="auto">
         <source src={musicUrl} type="audio/mpeg" />
       </audio>
 
